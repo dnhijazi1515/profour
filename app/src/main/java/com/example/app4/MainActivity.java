@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,9 +52,13 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                 tvResult.setText(String.valueOf(num1 * num2));
             }
             if (view.getId() == R.id.btnDivision) {
-                tvResult.setText(String.valueOf(num1 / num2));
-            }
+                if (num2 != 0) {
+                    tvResult.setText(String.valueOf(num1 / num2));
+                } else {
+                    Toast.makeText(MainActivity.this, "Cannot divide by zero", Toast.LENGTH_LONG).show();
+                }
 
+            }
         }
         else{
             tvResult.setText("Please enter numbers");
